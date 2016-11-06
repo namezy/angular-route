@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="s9.app">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
+
+<body>
+    <div>
+        <a href="#index">index</a>
+        <a href="#about">about</a>
+        
+    </div>
+    <div ng-view style="width:100%;height:400px;border:2px solid yellow;">
+
+    </div>
+    <script>
+        var app=angular.module("s9.app",["ngRoute"]);
+        app.config(function($routeProvider){
+            $routeProvider
+            .when("/index",{
+                template:"<div>{{mesage}}</div>",
+                controller:function($scope){
+                    $scope.mesage='hellow,world';
+                }
+            })
+            .when("/about",{
+                template:"<div>{{mesage}}</div>",
+                controller:function($scope){
+                    $scope.mesage='hellow,angular';
+                }
+            })
+            .otherwise({
+               redirectTo:"/index"
+            })
+        })
+    </script>
+</body>
+</html>
